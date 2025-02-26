@@ -1,5 +1,6 @@
 import 'package:eco_style/pages/onboarding/onboarding3.dart';
 import 'package:eco_style/pages/registration/sign_up.dart';
+import 'package:eco_style/pages/shop/shop.dart';
 import 'package:eco_style/themes/color_pallete.dart';
 import 'package:eco_style/widgets/multi_purpose_button.dart';
 import 'package:eco_style/widgets/non_visible_field.dart';
@@ -105,7 +106,7 @@ class _SignIn extends State<SignIn> {
                 textWeight: FontWeight.w600,
                 buttonHeight: 52,
                 radius: 8,
-                routeDestination: SignIn(),
+                routeDestination: Shop(),
                 hasIcon: false,
               ),
               const SizedBox(
