@@ -58,6 +58,9 @@ class _SignUp extends State<SignUp> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
                       SizedBox(

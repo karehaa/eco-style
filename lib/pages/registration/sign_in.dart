@@ -60,6 +60,9 @@ class _SignIn extends State<SignIn> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
                       SizedBox(height: spacing * 3),
