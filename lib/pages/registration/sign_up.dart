@@ -18,6 +18,12 @@ class _SignUp extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+    final screenHeigth = mediaQuery.size.height;
+    final double padding = screenWidth * 0.06;
+    final double spacing = screenHeigth * 0.02;
+
     return Scaffold(
       backgroundColor: ColorPallete.white,
       appBar: AppBar(
@@ -47,15 +53,15 @@ class _SignUp extends State<SignUp> {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: padding),
           child: Column(
             children: [
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 19,
+                      SizedBox(
+                        height: spacing,
                       ),
                       const Text(
                         "Welcome to EcoStyle!",
@@ -66,8 +72,8 @@ class _SignUp extends State<SignUp> {
                           fontFamily: 'Poppins',
                         ),
                       ),
-                      const SizedBox(
-                        height: 18,
+                      SizedBox(
+                        height: spacing * 0.9,
                       ),
                       const Align(
                         alignment: Alignment.centerLeft,
@@ -84,8 +90,8 @@ class _SignUp extends State<SignUp> {
                       const VisibleField(
                         labelText: "Input your First Name",
                       ),
-                      const SizedBox(
-                        height: 14,
+                      SizedBox(
+                        height: spacing,
                       ),
                       const Align(
                         alignment: Alignment.centerLeft,
@@ -102,8 +108,8 @@ class _SignUp extends State<SignUp> {
                       const VisibleField(
                         labelText: "xxx@gmail.com",
                       ),
-                      const SizedBox(
-                        height: 14,
+                      SizedBox(
+                        height: spacing,
                       ),
                       const Align(
                         alignment: Alignment.centerLeft,
@@ -120,8 +126,8 @@ class _SignUp extends State<SignUp> {
                       const NonVisibleField(
                         labelText: "Input your password",
                       ),
-                      const SizedBox(
-                        height: 14,
+                      SizedBox(
+                        height: spacing,
                       ),
                       const Align(
                         alignment: Alignment.centerLeft,
@@ -138,8 +144,8 @@ class _SignUp extends State<SignUp> {
                       const NonVisibleField(
                         labelText: "Input confirm password",
                       ),
-                      const SizedBox(
-                        height: 24,
+                      SizedBox(
+                        height: spacing * 1.5,
                       ),
                       const MultiPurposeButton(
                         buttonText: "Sign up",
@@ -151,8 +157,8 @@ class _SignUp extends State<SignUp> {
                         routeDestination: SignIn(),
                         hasIcon: false,
                       ),
-                      const SizedBox(
-                        height: 24,
+                      SizedBox(
+                        height: spacing * 1.5,
                       ),
                       const Text(
                         "or sign up with",
@@ -163,8 +169,8 @@ class _SignUp extends State<SignUp> {
                           fontFamily: 'Poppins',
                         ),
                       ),
-                      const SizedBox(
-                        height: 24,
+                      SizedBox(
+                        height: spacing * 1.5,
                       ),
                       MultiPurposeButton(
                         buttonColor: ColorPallete.white,
@@ -191,8 +197,8 @@ class _SignUp extends State<SignUp> {
                           )
                         ],
                       ),
-                      const SizedBox(
-                        height: 24,
+                      SizedBox(
+                        height: spacing * 1.5,
                       ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
