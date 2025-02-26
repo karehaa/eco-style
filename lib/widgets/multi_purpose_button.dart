@@ -1,14 +1,16 @@
 import 'package:eco_style/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingButton extends StatelessWidget {
-  const OnboardingButton({
+class MultiPurposeButton extends StatelessWidget {
+  const MultiPurposeButton({
     super.key,
     required this.buttonText,
+    required this.buttonHeight,
     required this.routeDestination,
   });
 
   final String buttonText;
+  final double buttonHeight;
   final Widget routeDestination;
 
   @override
@@ -17,8 +19,8 @@ class OnboardingButton extends StatelessWidget {
       onTap: () => Navigator.push(
           context, MaterialPageRoute(builder: (context) => routeDestination)),
       child: Container(
-        width: 362,
-        height: 50,
+        width: double.infinity,
+        height: buttonHeight,
         decoration: BoxDecoration(
             color: ColorPallete.terracota,
             borderRadius: BorderRadius.circular(6)),

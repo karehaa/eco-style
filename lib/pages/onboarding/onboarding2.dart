@@ -1,7 +1,8 @@
 import 'package:eco_style/pages/onboarding/onboarding3.dart';
 import 'package:eco_style/pages/registration/sign_in.dart';
 import 'package:eco_style/themes/color_pallete.dart';
-import 'package:eco_style/widgets/onboarding_button.dart';
+import 'package:eco_style/widgets/multi_purpose_button.dart';
+import 'package:eco_style/widgets/transparent_button.dart';
 import 'package:flutter/material.dart';
 
 class Onboarding2 extends StatelessWidget {
@@ -49,24 +50,16 @@ class Onboarding2 extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.only(right: 28),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        GestureDetector(
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignIn())),
-                          child: const Text(
-                            "Skip",
-                            style: TextStyle(
-                              color: ColorPallete.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        )
+                        TransparentButton(
+                          buttonText: "Skip",
+                          color: ColorPallete.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          routeDestination: SignIn(),
+                        ),
                       ],
                     ),
                   ),
@@ -108,8 +101,9 @@ class Onboarding2 extends StatelessWidget {
                   const SizedBox(
                     height: 40,
                   ),
-                  const OnboardingButton(
+                  const MultiPurposeButton(
                     buttonText: "Continue",
+                    buttonHeight: 50,
                     routeDestination: Onboarding3(),
                   ),
                 ],
