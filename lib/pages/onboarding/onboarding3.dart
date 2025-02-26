@@ -102,8 +102,13 @@ class Onboarding3 extends StatelessWidget {
                   ),
                   const MultiPurposeButton(
                     buttonText: "Continue",
+                    textColor: ColorPallete.white,
+                    textWeight: FontWeight.w500,
+                    buttonColor: ColorPallete.terracota,
                     buttonHeight: 50,
+                    radius: 6,
                     routeDestination: SignIn(),
+                    hasIcon: false,
                   ),
                 ],
               )),

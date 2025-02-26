@@ -1,17 +1,36 @@
-import 'package:eco_style/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
 
 class MultiPurposeButton extends StatelessWidget {
   const MultiPurposeButton({
     super.key,
+    required this.buttonColor,
+    required this.textColor,
+    required this.textWeight,
     required this.buttonText,
     required this.buttonHeight,
+    required this.radius,
+    this.hasShadow = false,
+    this.shadows,
     required this.routeDestination,
+    this.hasIcon = true,
+    this.iconPath,
+    this.iconWidth,
+    this.iconHeight,
   });
 
+  final Color buttonColor;
+  final Color textColor;
+  final FontWeight textWeight;
   final String buttonText;
   final double buttonHeight;
+  final double radius;
   final Widget routeDestination;
+  final bool hasShadow;
+  final List<BoxShadow>? shadows;
+  final bool hasIcon;
+  final String? iconPath;
+  final double? iconWidth;
+  final double? iconHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +41,35 @@ class MultiPurposeButton extends StatelessWidget {
         width: double.infinity,
         height: buttonHeight,
         decoration: BoxDecoration(
-            color: ColorPallete.terracota,
-            borderRadius: BorderRadius.circular(6)),
+          color: buttonColor,
+          borderRadius: BorderRadius.circular(radius),
+          boxShadow: hasShadow ? shadows ?? shadows : [],
+        ),
         child: Center(
-            child: Text(
-          buttonText,
-          style: const TextStyle(
-            color: ColorPallete.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'Poppins',
-          ),
-          textAlign: TextAlign.center,
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (hasIcon && iconPath != null)
+              Image.asset(
+                iconPath!,
+                width: iconWidth,
+                height: iconHeight,
+              ),
+            if (hasIcon && iconPath != null)
+              const SizedBox(
+                width: 12,
+              ),
+            Text(
+              buttonText,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 16,
+                fontWeight: textWeight,
+                fontFamily: 'Poppins',
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         )),
       ),
     );

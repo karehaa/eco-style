@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:eco_style/themes/color_pallete.dart';
 
 class TransparentButton extends StatelessWidget {
   const TransparentButton({

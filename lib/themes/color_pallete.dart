@@ -4,6 +4,7 @@ class ColorPallete {
   static const Color white = Color.fromARGB(255, 255, 255, 255);
   static const Color black = Color.fromARGB(255, 0, 0, 0);
   static const Color grey = Color.fromARGB(255, 188, 188, 188);
+  static const Color darkGrey = Color.fromARGB(255, 143, 143, 143);
   static const Color lightCream = Color.fromARGB(255, 246, 242, 235);
   static const Color darkBrown = Color.fromARGB(255, 73, 57, 44);
   static const Color cream = Color.fromARGB(255, 200, 185, 126);
