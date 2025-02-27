@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:eco_style/themes/color_pallete.dart';
+import 'package:eco_style/core/configs/themes/color_pallete.dart';
 
 class NonVisibleField extends StatefulWidget {
-  const NonVisibleField({super.key, required this.labelText});
+  const NonVisibleField(
+      {super.key, required this.labelText, required this.controller});
 
   final String labelText;
+  final TextEditingController controller;
 
   @override
   State<NonVisibleField> createState() => _NonVisibleFieldState();
@@ -15,6 +17,7 @@ class _NonVisibleFieldState extends State<NonVisibleField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       obscureText: !passwordIsShown,
       obscuringCharacter: '⬤',
       decoration: InputDecoration(

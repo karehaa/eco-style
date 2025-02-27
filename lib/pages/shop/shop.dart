@@ -1,4 +1,4 @@
-import 'package:eco_style/themes/color_pallete.dart';
+import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
 
 class Shop extends StatelessWidget {

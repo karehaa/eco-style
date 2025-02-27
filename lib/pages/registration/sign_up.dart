@@ -1,4 +1,7 @@
-import 'package:eco_style/themes/color_pallete.dart';
+import 'package:eco_style/core/configs/themes/color_pallete.dart';
+import 'package:eco_style/data/models/sign_up_req_parameter.dart';
+import 'package:eco_style/domain/usecases/sign_up.dart';
+import 'package:eco_style/service_locator.dart';
 import 'package:eco_style/widgets/multi_purpose_button.dart';
 import 'package:eco_style/widgets/non_visible_field.dart';
 import 'package:eco_style/widgets/transparent_button.dart';
@@ -14,7 +17,20 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUp extends State<SignUp> {
-  bool passwordIsShown = false;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  void showErrorMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+          content:
+              Text(message, style: const TextStyle(color: ColorPallete.white)),
+          backgroundColor: Colors.red),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +106,8 @@ class _SignUp extends State<SignUp> {
                           ),
                         ),
                       ),
-                      const VisibleField(
+                      VisibleField(
+                        controller: usernameController,
                         labelText: "Input your First Name",
                       ),
                       SizedBox(
@@ -108,7 +125,8 @@ class _SignUp extends State<SignUp> {
                           ),
                         ),
                       ),
-                      const VisibleField(
+                      VisibleField(
+                        controller: emailController,
                         labelText: "xxx@gmail.com",
                       ),
                       SizedBox(
@@ -126,7 +144,8 @@ class _SignUp extends State<SignUp> {
                           ),
                         ),
                       ),
-                      const NonVisibleField(
+                      NonVisibleField(
+                        controller: passwordController,
                         labelText: "Input your password",
                       ),
                       SizedBox(
@@ -144,21 +163,42 @@ class _SignUp extends State<SignUp> {
                           ),
                         ),
                       ),
-                      const NonVisibleField(
+                      NonVisibleField(
+                        controller: confirmPasswordController,
                         labelText: "Input confirm password",
                       ),
                       SizedBox(
                         height: spacing * 1.5,
                       ),
-                      const MultiPurposeButton(
+                      MultiPurposeButton(
                         buttonText: "Sign up",
                         buttonColor: ColorPallete.terracota,
                         textColor: ColorPallete.white,
                         textWeight: FontWeight.w600,
                         buttonHeight: 52,
                         radius: 8,
-                        routeDestination: SignIn(),
                         hasIcon: false,
+                        forRoute: false,
+                        function: () {
+                          if (confirmPasswordController.text.isEmpty ||
+                              passwordController.text.isEmpty ||
+                              emailController.text.isEmpty ||
+                              usernameController.text.isEmpty) {
+                            showErrorMessage("All fields are required.");
+                          } else if (confirmPasswordController.text !=
+                              passwordController.text) {
+                            showErrorMessage(
+                                "Password do not match. Please try again.");
+                          } else {
+                            sl<SignUpUseCase>().call(
+                              param: SignUpReqParameter(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                username: usernameController.text,
+                              ),
+                            );
+                          }
+                        },
                       ),
                       SizedBox(
                         height: spacing * 1.5,

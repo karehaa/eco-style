@@ -11,7 +11,9 @@ class MultiPurposeButton extends StatelessWidget {
     required this.radius,
     this.hasShadow = false,
     this.shadows,
-    required this.routeDestination,
+    this.routeDestination,
+    this.forRoute = true,
+    this.function,
     this.hasIcon = true,
     this.iconPath,
     this.iconWidth,
@@ -24,7 +26,9 @@ class MultiPurposeButton extends StatelessWidget {
   final String buttonText;
   final double buttonHeight;
   final double radius;
-  final Widget routeDestination;
+  final Widget? routeDestination;
+  final bool forRoute;
+  final void Function()? function;
   final bool hasShadow;
   final List<BoxShadow>? shadows;
   final bool hasIcon;
@@ -35,8 +39,14 @@ class MultiPurposeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => routeDestination)),
+      onTap: forRoute && routeDestination != null
+          ? () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => routeDestination!),
+                ),
+              }
+          : function,
       child: Container(
         width: double.infinity,
         height: buttonHeight,

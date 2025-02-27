@@ -1,6 +1,6 @@
 import 'package:eco_style/pages/onboarding/onboarding2.dart';
 import 'package:eco_style/pages/registration/sign_in.dart';
-import 'package:eco_style/themes/color_pallete.dart';
+import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:eco_style/widgets/multi_purpose_button.dart';
 import 'package:eco_style/widgets/transparent_button.dart';
 import 'package:flutter/material.dart';
