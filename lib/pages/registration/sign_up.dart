@@ -42,29 +42,44 @@ class _SignUp extends State<SignUp> {
 
     return Scaffold(
       backgroundColor: ColorPallete.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SignIn(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorPallete.terracota,
+            boxShadow: [
+              BoxShadow(
+                color: ColorPallete.black.withOpacity(0.25),
+                blurRadius: 4,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leading: IconButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SignIn(),
+                ),
+              ),
+              icon: const Icon(Icons.arrow_back_ios_new_rounded),
+              color: ColorPallete.white,
             ),
+            title: const Text(
+              "Register User",
+              style: TextStyle(
+                color: ColorPallete.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Inter',
+              ),
+            ),
+            centerTitle: true,
           ),
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          color: ColorPallete.terracota,
         ),
-        title: const Text(
-          "User",
-          style: TextStyle(
-            color: ColorPallete.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            fontFamily: 'Poppins',
-          ),
-        ),
-        centerTitle: true,
       ),
       body: SafeArea(
         child: Container(
@@ -80,19 +95,19 @@ class _SignUp extends State<SignUp> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: spacing,
+                        height: spacing * 1.5,
                       ),
                       const Text(
                         "Welcome to EcoStyle!",
                         style: TextStyle(
                           color: ColorPallete.terracota,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Inter',
                         ),
                       ),
                       SizedBox(
-                        height: spacing * 0.9,
+                        height: spacing * 1.5,
                       ),
                       const Align(
                         alignment: Alignment.centerLeft,
@@ -102,10 +117,11 @@ class _SignUp extends State<SignUp> {
                             color: ColorPallete.darkBlue,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Inter',
                           ),
                         ),
                       ),
+                      SizedBox(height: spacing * 0.8),
                       VisibleField(
                         controller: usernameController,
                         labelText: "Input your First Name",
@@ -121,10 +137,11 @@ class _SignUp extends State<SignUp> {
                             color: ColorPallete.darkBlue,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Inter',
                           ),
                         ),
                       ),
+                      SizedBox(height: spacing * 0.8),
                       VisibleField(
                         controller: emailController,
                         labelText: "xxx@gmail.com",
@@ -140,10 +157,11 @@ class _SignUp extends State<SignUp> {
                             color: ColorPallete.darkBlue,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Inter',
                           ),
                         ),
                       ),
+                      SizedBox(height: spacing * 0.8),
                       NonVisibleField(
                         controller: passwordController,
                         labelText: "Input your password",
@@ -159,10 +177,11 @@ class _SignUp extends State<SignUp> {
                             color: ColorPallete.darkBlue,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Inter',
                           ),
                         ),
                       ),
+                      SizedBox(height: spacing * 0.8),
                       NonVisibleField(
                         controller: confirmPasswordController,
                         labelText: "Input confirm password",
@@ -175,7 +194,6 @@ class _SignUp extends State<SignUp> {
                         buttonColor: ColorPallete.terracota,
                         textColor: ColorPallete.white,
                         textWeight: FontWeight.w600,
-                        buttonHeight: 52,
                         radius: 8,
                         hasIcon: false,
                         forRoute: false,
@@ -204,12 +222,12 @@ class _SignUp extends State<SignUp> {
                         height: spacing * 1.5,
                       ),
                       const Text(
-                        "or sign up with",
+                        "Or sign up with",
                         style: TextStyle(
                           color: ColorPallete.darkGrey,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Inter',
                         ),
                       ),
                       SizedBox(
@@ -220,7 +238,6 @@ class _SignUp extends State<SignUp> {
                         textColor: ColorPallete.black,
                         textWeight: FontWeight.w500,
                         buttonText: "Continue with Google",
-                        buttonHeight: 59,
                         radius: 10,
                         routeDestination: const SignIn(),
                         iconPath: 'assets/image/others/google_logo.png',
@@ -252,7 +269,7 @@ class _SignUp extends State<SignUp> {
                               color: ColorPallete.black,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              fontFamily: 'Poppins',
+                              fontFamily: 'Inter',
                             ),
                           ),
                           TransparentButton(

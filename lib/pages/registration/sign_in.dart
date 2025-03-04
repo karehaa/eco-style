@@ -1,7 +1,7 @@
 import 'package:eco_style/pages/onboarding/onboarding3.dart';
 import 'package:eco_style/pages/registration/forgot_password.dart';
 import 'package:eco_style/pages/registration/sign_up.dart';
-import 'package:eco_style/pages/shop/shop.dart';
+import 'package:eco_style/pages/shop/home_page.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:eco_style/widgets/multi_purpose_button.dart';
 import 'package:eco_style/widgets/non_visible_field.dart';
@@ -30,29 +30,44 @@ class _SignIn extends State<SignIn> {
 
     return Scaffold(
       backgroundColor: ColorPallete.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const Onboarding3(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorPallete.terracota,
+            boxShadow: [
+              BoxShadow(
+                color: ColorPallete.black.withOpacity(0.25),
+                blurRadius: 4,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leading: IconButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Onboarding3(),
+                ),
+              ),
+              icon: const Icon(Icons.arrow_back_ios_new_rounded),
+              color: ColorPallete.white,
             ),
+            title: const Text(
+              "Login",
+              style: TextStyle(
+                color: ColorPallete.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Inter',
+              ),
+            ),
+            centerTitle: true,
           ),
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          color: ColorPallete.terracota,
         ),
-        title: const Text(
-          "Login",
-          style: TextStyle(
-            color: ColorPallete.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            fontFamily: 'Poppins',
-          ),
-        ),
-        centerTitle: true,
       ),
       body: SafeArea(
         child: Container(
@@ -72,9 +87,9 @@ class _SignIn extends State<SignIn> {
                         "Welcome Back!",
                         style: TextStyle(
                           color: ColorPallete.terracota,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Inter',
                         ),
                       ),
                       SizedBox(height: spacing * 2),
@@ -86,10 +101,11 @@ class _SignIn extends State<SignIn> {
                             color: ColorPallete.darkBlue,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Inter',
                           ),
                         ),
                       ),
+                      SizedBox(height: spacing * 0.8),
                       VisibleField(
                         controller: emailController,
                         labelText: "xxx@gmail.com",
@@ -103,10 +119,11 @@ class _SignIn extends State<SignIn> {
                             color: ColorPallete.darkBlue,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Inter',
                           ),
                         ),
                       ),
+                      SizedBox(height: spacing * 0.8),
                       NonVisibleField(
                         controller: passwordController,
                         labelText: "Input your password",
@@ -116,10 +133,9 @@ class _SignIn extends State<SignIn> {
                         buttonText: "Login",
                         buttonColor: ColorPallete.terracota,
                         textColor: ColorPallete.white,
-                        textWeight: FontWeight.w600,
-                        buttonHeight: 52,
+                        textWeight: FontWeight.w700,
                         radius: 8,
-                        routeDestination: Shop(),
+                        routeDestination: HomePage(),
                         hasIcon: false,
                       ),
                       SizedBox(height: spacing * 1.5),
@@ -130,13 +146,12 @@ class _SignIn extends State<SignIn> {
                         fontWeight: FontWeight.w600,
                         routeDestination: ForgotPassword(),
                       ),
-                      SizedBox(height: spacing * 3),
+                      SizedBox(height: spacing * 1.5),
                       MultiPurposeButton(
                         buttonColor: ColorPallete.white,
                         textColor: ColorPallete.black,
-                        textWeight: FontWeight.w500,
+                        textWeight: FontWeight.w400,
                         buttonText: "Continue with Google",
-                        buttonHeight: 59,
                         radius: 10,
                         routeDestination: const SignIn(),
                         iconPath: 'assets/image/others/google_logo.png',
@@ -166,7 +181,7 @@ class _SignIn extends State<SignIn> {
                               color: ColorPallete.black,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              fontFamily: 'Poppins',
+                              fontFamily: 'Inter',
                             ),
                           ),
                           TransparentButton(

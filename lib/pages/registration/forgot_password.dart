@@ -26,29 +26,44 @@ class _ForgotPassword extends State<ForgotPassword> {
 
     return Scaffold(
       backgroundColor: ColorPallete.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SignIn(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorPallete.terracota,
+            boxShadow: [
+              BoxShadow(
+                color: ColorPallete.black.withOpacity(0.25),
+                blurRadius: 4,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leading: IconButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SignIn(),
+                ),
+              ),
+              icon: const Icon(Icons.arrow_back_ios_new_rounded),
+              color: ColorPallete.white,
             ),
+            title: const Text(
+              "Forgot Password",
+              style: TextStyle(
+                color: ColorPallete.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Inter',
+              ),
+            ),
+            centerTitle: true,
           ),
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          color: ColorPallete.terracota,
         ),
-        title: const Text(
-          "Forgot Password",
-          style: TextStyle(
-            color: ColorPallete.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            fontFamily: 'Poppins',
-          ),
-        ),
-        centerTitle: true,
       ),
       body: SafeArea(
         child: Container(
@@ -74,19 +89,19 @@ class _ForgotPassword extends State<ForgotPassword> {
                         "Forgot your password?",
                         style: TextStyle(
                           color: ColorPallete.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'Poppins',
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Inter',
                         ),
                       ),
                       SizedBox(height: spacing * 1),
                       const Text(
-                        "Masukkan email Anda yang terdaftar di bawah ini untuk menerima instruksi pengaturan ulang kata sandi",
+                        "Enter your registered email below to get password reset instructions.",
                         style: TextStyle(
                           color: ColorPallete.grey,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Inter',
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -99,10 +114,11 @@ class _ForgotPassword extends State<ForgotPassword> {
                             color: ColorPallete.darkBlue,
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Inter',
                           ),
                         ),
                       ),
+                      SizedBox(height: spacing * 0.8),
                       VisibleField(
                         controller: emailController,
                         labelText: "Input email address",
@@ -112,13 +128,12 @@ class _ForgotPassword extends State<ForgotPassword> {
                         buttonText: "Send",
                         buttonColor: ColorPallete.terracota,
                         textColor: ColorPallete.white,
-                        textWeight: FontWeight.w400,
-                        buttonHeight: 52,
+                        textWeight: FontWeight.w700,
                         radius: 8,
                         routeDestination: ForgotPassword(),
                         hasIcon: false,
                       ),
-                      SizedBox(height: spacing * 9),
+                      SizedBox(height: spacing * 1.5),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -128,7 +143,7 @@ class _ForgotPassword extends State<ForgotPassword> {
                               color: ColorPallete.black,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              fontFamily: 'Poppins',
+                              fontFamily: 'Inter',
                             ),
                           ),
                           TransparentButton(

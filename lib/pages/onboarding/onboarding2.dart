@@ -1,3 +1,4 @@
+import 'package:eco_style/pages/onboarding/onboarding1.dart';
 import 'package:eco_style/pages/onboarding/onboarding3.dart';
 import 'package:eco_style/pages/registration/sign_in.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
@@ -50,10 +51,23 @@ class Onboarding2 extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.only(right: 28),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TransparentButton(
+                        GestureDetector(
+                          child: IconButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Onboarding1(),
+                              ),
+                            ),
+                            icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                            color: ColorPallete.white,
+                          ),
+                        ),
+                        const Spacer(),
+                        const TransparentButton(
                           buttonText: "Skip",
                           color: ColorPallete.white,
                           fontSize: 14,
@@ -68,9 +82,9 @@ class Onboarding2 extends StatelessWidget {
                     "Marketplace & RentWear",
                     style: TextStyle(
                       color: ColorPallete.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: 'Montserrat',
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Inter',
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -78,14 +92,14 @@ class Onboarding2 extends StatelessWidget {
                     height: 14,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 13),
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
-                      "Beli & jual pakaian sustainable dan preloved fashion. Sewa pakaian untuk berbagai acara dari brand sustainable & pengguna lain.",
+                      "Buy & sell sustainable and preloved fashion. Rent outfits for any occasion from sustainable brands & other users.",
                       style: TextStyle(
                         color: ColorPallete.white.withOpacity(0.7),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Inter',
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -106,7 +120,6 @@ class Onboarding2 extends StatelessWidget {
                     textColor: ColorPallete.white,
                     textWeight: FontWeight.w500,
                     buttonColor: ColorPallete.terracota,
-                    buttonHeight: 50,
                     radius: 6,
                     routeDestination: Onboarding3(),
                     hasIcon: false,

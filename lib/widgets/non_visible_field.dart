@@ -27,7 +27,7 @@ class _NonVisibleFieldState extends State<NonVisibleField> {
           color: ColorPallete.grey,
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          fontFamily: 'Poppins',
+          fontFamily: 'Inter',
         ),
         filled: true,
         fillColor: ColorPallete.white,

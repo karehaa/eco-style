@@ -7,7 +7,6 @@ class MultiPurposeButton extends StatelessWidget {
     required this.textColor,
     required this.textWeight,
     required this.buttonText,
-    required this.buttonHeight,
     required this.radius,
     this.hasShadow = false,
     this.shadows,
@@ -24,7 +23,6 @@ class MultiPurposeButton extends StatelessWidget {
   final Color textColor;
   final FontWeight textWeight;
   final String buttonText;
-  final double buttonHeight;
   final double radius;
   final Widget? routeDestination;
   final bool forRoute;
@@ -49,7 +47,7 @@ class MultiPurposeButton extends StatelessWidget {
           : function,
       child: Container(
         width: double.infinity,
-        height: buttonHeight,
+        height: 48,
         decoration: BoxDecoration(
           color: buttonColor,
           borderRadius: BorderRadius.circular(radius),
@@ -75,7 +73,7 @@ class MultiPurposeButton extends StatelessWidget {
                 color: textColor,
                 fontSize: 16,
                 fontWeight: textWeight,
-                fontFamily: 'Poppins',
+                fontFamily: 'Inter',
               ),
               textAlign: TextAlign.center,
             ),

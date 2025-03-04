@@ -1,3 +1,4 @@
+import 'package:eco_style/pages/onboarding/onboarding2.dart';
 import 'package:eco_style/pages/registration/sign_in.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:eco_style/widgets/multi_purpose_button.dart';
@@ -49,10 +50,23 @@ class Onboarding3 extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.only(right: 28),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TransparentButton(
+                        GestureDetector(
+                          child: IconButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Onboarding2(),
+                              ),
+                            ),
+                            icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                            color: ColorPallete.white,
+                          ),
+                        ),
+                        const Spacer(),
+                        const TransparentButton(
                           buttonText: "Skip",
                           color: ColorPallete.white,
                           fontSize: 14,
@@ -67,9 +81,9 @@ class Onboarding3 extends StatelessWidget {
                     "Repair Services & Store Finder",
                     style: TextStyle(
                       color: ColorPallete.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: 'Montserrat',
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Inter',
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -77,14 +91,14 @@ class Onboarding3 extends StatelessWidget {
                     height: 14,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 13),
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
-                      "Hubungkan dengan penjahit & layanan repair untuk pakaian lama. Temukan toko sustainable fashion & event di kotamu.",
+                      "Connect with tailors & repair services for your old clothes. Discover sustainable fashion stores & events in your city!",
                       style: TextStyle(
                         color: ColorPallete.white.withOpacity(0.7),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Inter',
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -101,11 +115,10 @@ class Onboarding3 extends StatelessWidget {
                     height: 40,
                   ),
                   const MultiPurposeButton(
-                    buttonText: "Continue",
+                    buttonText: "Get Started",
                     textColor: ColorPallete.white,
                     textWeight: FontWeight.w500,
                     buttonColor: ColorPallete.terracota,
-                    buttonHeight: 50,
                     radius: 6,
                     routeDestination: SignIn(),
                     hasIcon: false,

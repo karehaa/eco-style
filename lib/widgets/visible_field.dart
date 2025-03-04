@@ -24,7 +24,7 @@ class _VisibleFieldState extends State<VisibleField> {
           color: ColorPallete.grey,
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          fontFamily: 'Poppins',
+          fontFamily: 'Inter',
         ),
         filled: true,
         fillColor: ColorPallete.white,

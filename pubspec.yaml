@@ -70,11 +70,33 @@ flutter:
     - assets/image/others/google_logo.png
     - assets/image/others/lock_logo.png
     - assets/image/background_images/lady_white_suit.jpg
+    - assets/image/background_images/peoples.jpg
     - assets/image/background_images/a_dude.jpg
     - assets/image/background_images/children.jpg
+    - assets/image/card_images/sustainable_fashion/classic_wrap_top.png    
+    - assets/image/card_images/sustainable_fashion/evening_dress.png
+    - assets/image/card_images/sustainable_fashion/nila_long_sleeve.png
+    - assets/image/card_images/sustainable_fashion/sulla_oversized_shirt.png
+    - assets/image/card_images/preloved/womens_black_blazer.png
+    - assets/image/card_images/preloved/womens_blue_jeans.png
+    - assets/image/card_images/preloved/womens_blue_tshirt.png
+    - assets/image/card_images/preloved/womens_crop_top.png
     - assets/image/dots/dot_first.png
     - assets/image/dots/dot_second.png
     - assets/image/dots/dot_third.png
+    - assets/image/icons/filter_icon.png
+    - assets/image/icons/heart_icon.png
+    - assets/image/icons/location_icon.png
+    - assets/image/icons/search_icon.png
+    - assets/image/icons/shop_icon.png
+    - assets/image/icons/star_icon.png
+    - assets/image/icons/star_off_icon.png
+    - assets/image/icons/market_icon.png
+    - assets/image/icons/finder_icon.png
+    - assets/image/icons/profile_icon.png
+    - assets/image/icons/rentwear_icon.png
+    - assets/image/icons/repair_icon.png
+    - assets/image/navbar/navbar_shape.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -92,11 +114,21 @@ flutter:
       fonts:
         - asset: fonts/Montserrat-Regular.ttf
         - asset: fonts/Montserrat-ExtraBold.ttf
-    - family: Poppins
+    - family: Inika
       fonts:
-        - asset: fonts/Poppins-Regular.ttf
-        - asset: fonts/Poppins-Medium.ttf
-        - asset: fonts/Poppins-SemiBold.ttf
+        - asset: fonts/Inika-Regular.ttf
+        - asset: fonts/Inika-Bold.ttf
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter_Thin.ttf
+        - asset: fonts/Inter_ExtraLight.ttf
+        - asset: fonts/Inter_Light.ttf
+        - asset: fonts/Inter_Regular.ttf
+        - asset: fonts/Inter_Medium.ttf
+        - asset: fonts/Inter_SemiBold.ttf
+        - asset: fonts/Inter_Bold.ttf
+        - asset: fonts/Inter_ExtraBold.ttf
+        - asset: fonts/Inter_Black.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

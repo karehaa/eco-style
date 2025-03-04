@@ -50,10 +50,23 @@ class Onboarding1 extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.only(right: 28),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TransparentButton(
+                        GestureDetector(
+                          child: IconButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Onboarding1(),
+                              ),
+                            ),
+                            icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                            color: ColorPallete.white,
+                          ),
+                        ),
+                        const Spacer(),
+                        const TransparentButton(
                           buttonText: "Skip",
                           color: ColorPallete.white,
                           fontSize: 14,
@@ -68,9 +81,9 @@ class Onboarding1 extends StatelessWidget {
                     "Welcome to EcoStyle!",
                     style: TextStyle(
                       color: ColorPallete.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: 'Montserrat',
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Inter',
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -78,14 +91,14 @@ class Onboarding1 extends StatelessWidget {
                     height: 14,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 13),
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
-                      "Selamat datang di EcoStyle, platform sustainable fashion! Temukan cara mudah untuk beralih ke gaya hidup ramah lingkungan dengan fashion yang stylish.",
+                      "Your go-to platform for sustainable fashion! Discover an easy way to switch to an eco-friendly lifestyle while staying stylish.",
                       style: TextStyle(
                         color: ColorPallete.white.withOpacity(0.7),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Inter',
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -106,7 +119,6 @@ class Onboarding1 extends StatelessWidget {
                     textColor: ColorPallete.white,
                     textWeight: FontWeight.w500,
                     buttonColor: ColorPallete.terracota,
-                    buttonHeight: 50,
                     radius: 6,
                     routeDestination: Onboarding2(),
                     hasIcon: false,

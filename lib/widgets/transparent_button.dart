@@ -27,7 +27,7 @@ class TransparentButton extends StatelessWidget {
           color: color,
           fontSize: fontSize,
           fontWeight: fontWeight,
-          fontFamily: 'Poppins',
+          fontFamily: 'Inter',
         ),
       ),
     );
