@@ -69,6 +69,7 @@ flutter:
     - assets/image/others/ecostyle_logo.png
     - assets/image/others/google_logo.png
     - assets/image/others/lock_logo.png
+    - assets/image/others/dewi_sartika_profile.png
     - assets/image/background_images/lady_white_suit.jpg
     - assets/image/background_images/peoples.jpg
     - assets/image/background_images/a_dude.jpg
@@ -84,6 +85,8 @@ flutter:
     - assets/image/dots/dot_first.png
     - assets/image/dots/dot_second.png
     - assets/image/dots/dot_third.png
+    - assets/image/dots/dot_on.png
+    - assets/image/dots/dot_off.png
     - assets/image/icons/filter_icon.png
     - assets/image/icons/heart_icon.png
     - assets/image/icons/location_icon.png
@@ -96,6 +99,10 @@ flutter:
     - assets/image/icons/profile_icon.png
     - assets/image/icons/rentwear_icon.png
     - assets/image/icons/repair_icon.png
+    - assets/image/icons/cart_icon.png
+    - assets/image/icons/share_icon.png
+    - assets/image/icons/favorite_inactive.png
+    - assets/image/icons/arrow_right_icon.png
     - assets/image/navbar/navbar_shape.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
