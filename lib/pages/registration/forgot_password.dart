@@ -1,3 +1,4 @@
+import 'package:eco_style/pages/registration/forgot_success.dart';
 import 'package:eco_style/pages/registration/sign_in.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:eco_style/widgets/multi_purpose_button.dart';
@@ -25,7 +26,7 @@ class _ForgotPassword extends State<ForgotPassword> {
     final double spacing = screenHeight * 0.02;
 
     return Scaffold(
-      backgroundColor: ColorPallete.white,
+      backgroundColor: ColorPallete.lightCream,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: Container(
@@ -130,7 +131,7 @@ class _ForgotPassword extends State<ForgotPassword> {
                         textColor: ColorPallete.white,
                         textWeight: FontWeight.w700,
                         radius: 8,
-                        routeDestination: ForgotPassword(),
+                        routeDestination: ForgotSuccess(),
                         hasIcon: false,
                       ),
                       SizedBox(height: spacing * 1.5),

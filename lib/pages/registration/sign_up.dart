@@ -41,7 +41,7 @@ class _SignUp extends State<SignUp> {
     final double spacing = screenHeigth * 0.02;
 
     return Scaffold(
-      backgroundColor: ColorPallete.white,
+      backgroundColor: ColorPallete.lightCream,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: Container(

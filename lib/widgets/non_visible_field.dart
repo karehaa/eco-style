@@ -30,7 +30,7 @@ class _NonVisibleFieldState extends State<NonVisibleField> {
           fontFamily: 'Inter',
         ),
         filled: true,
-        fillColor: ColorPallete.white,
+        fillColor: ColorPallete.lightCream,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
           borderSide: const BorderSide(

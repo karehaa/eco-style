@@ -1,3 +1,4 @@
+import 'package:eco_style/pages/shop/filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:eco_style/pages/shop/preloved.dart';
@@ -120,7 +121,9 @@ class _HomePage extends State<HomePage> {
                                     ),
                                   ),
                                   const SizedBox(width: 8),
-                                  const FilterButton(),
+                                  const FilterButton(
+                                    routeTo: FilterPage(),
+                                  ),
                                 ],
                               ),
                               Row(

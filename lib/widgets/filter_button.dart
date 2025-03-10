@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 
 class FilterButton extends StatelessWidget {
-  const FilterButton({super.key});
+  const FilterButton({
+    super.key,
+    required this.routeTo,
+  });
+
+  final Widget routeTo;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,12 @@ class FilterButton extends StatelessWidget {
           width: 24,
           height: 24,
         ),
-        onPressed: () {},
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => routeTo),
+          ),
+        },
       ),
     );
   }

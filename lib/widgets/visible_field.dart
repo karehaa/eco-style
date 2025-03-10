@@ -27,7 +27,7 @@ class _VisibleFieldState extends State<VisibleField> {
           fontFamily: 'Inter',
         ),
         filled: true,
-        fillColor: ColorPallete.white,
+        fillColor: ColorPallete.lightCream,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
           borderSide: const BorderSide(

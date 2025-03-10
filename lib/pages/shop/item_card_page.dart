@@ -87,13 +87,15 @@ class _ItemCardPageState extends State<ItemCardPage> {
       body: Stack(
         children: [
           SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Container(
+              margin: const EdgeInsets.only(bottom: 100),
               width: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     width: double.infinity,
                     height: 399,
                     child: Stack(
@@ -312,51 +314,91 @@ class _ItemCardPageState extends State<ItemCardPage> {
                       ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 26,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
                       horizontal: 23,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "S",
-                          style: TextStyle(
-                            color: ColorPallete.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Inter',
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 19,
+                            vertical: 14,
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorPallete.white,
+                            borderRadius: BorderRadius.circular(66),
+                          ),
+                          child: const Text(
+                            "S",
+                            style: TextStyle(
+                              color: ColorPallete.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Inter',
+                            ),
                           ),
                         ),
-                        Text(
-                          "M",
-                          style: TextStyle(
-                            color: ColorPallete.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Inter',
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 19,
+                            vertical: 14,
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorPallete.white,
+                            borderRadius: BorderRadius.circular(66),
+                          ),
+                          child: const Text(
+                            "M",
+                            style: TextStyle(
+                              color: ColorPallete.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Inter',
+                            ),
                           ),
                         ),
-                        Text(
-                          "L",
-                          style: TextStyle(
-                            color: ColorPallete.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Inter',
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 19,
+                            vertical: 14,
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorPallete.white,
+                            borderRadius: BorderRadius.circular(66),
+                          ),
+                          child: const Text(
+                            "L",
+                            style: TextStyle(
+                              color: ColorPallete.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Inter',
+                            ),
                           ),
                         ),
-                        Text(
-                          "XL",
-                          style: TextStyle(
-                            color: ColorPallete.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Inter',
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 19,
+                            vertical: 14,
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorPallete.white,
+                            borderRadius: BorderRadius.circular(66),
+                          ),
+                          child: const Text(
+                            "XL",
+                            style: TextStyle(
+                              color: ColorPallete.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Inter',
+                            ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 118,
                         )
                       ],
@@ -374,24 +416,34 @@ class _ItemCardPageState extends State<ItemCardPage> {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 26,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
                       horizontal: 23,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Stone",
-                          style: TextStyle(
-                            color: ColorPallete.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Inter',
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 42.5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorPallete.white,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Text(
+                            "Stone",
+                            style: TextStyle(
+                              color: ColorPallete.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Inter',
+                            ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 118,
                         )
                       ],
@@ -825,23 +877,23 @@ class _ItemCardPageState extends State<ItemCardPage> {
             ),
           ),
           Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: const EdgeInsetsDirectional.symmetric(
+                vertical: 20,
+                horizontal: 13,
+              ),
+              color: ColorPallete.white,
+              width: double.infinity,
+              height: 89,
               child: Container(
-                padding: EdgeInsetsDirectional.symmetric(
-                  vertical: 20,
-                  horizontal: 13,
-                ),
-                color: ColorPallete.white,
-                width: double.infinity,
-                height: 89,
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: ColorPallete.terracota),
-                  child: const Center(
-                      child: Text(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: ColorPallete.terracota),
+                child: const Center(
+                  child: Text(
                     "Add to cart",
                     style: TextStyle(
                       color: ColorPallete.white,
@@ -849,9 +901,11 @@ class _ItemCardPageState extends State<ItemCardPage> {
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Inter',
                     ),
-                  )),
+                  ),
                 ),
-              ))
+              ),
+            ),
+          ),
         ],
       ),
     );

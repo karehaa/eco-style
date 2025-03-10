@@ -24,16 +24,18 @@ class ItemBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ItemCardPage(
-                    imagePath: imagePath,
-                    starCount: starCount,
-                    rating: rating,
-                    itemBrand: itemBrand,
-                    itemName: itemName,
-                    itemPrice: itemPrice,
-                  ))),
+        context,
+        MaterialPageRoute(
+          builder: (context) => ItemCardPage(
+            imagePath: imagePath,
+            starCount: starCount,
+            rating: rating,
+            itemBrand: itemBrand,
+            itemName: itemName,
+            itemPrice: itemPrice,
+          ),
+        ),
+      ),
       child: SizedBox(
         width: 152,
         height: 260,
