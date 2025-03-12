@@ -40,6 +40,7 @@ dependencies:
   get_it:
   dartz:
   logger:
+  intl: ^0.20.2
   # google_fonts: ^6.2.1
 
 dev_dependencies:
@@ -104,6 +105,7 @@ flutter:
     - assets/image/icons/favorite_inactive.png
     - assets/image/icons/arrow_right_icon.png
     - assets/image/icons/email_sent_icon.png
+    - assets/image/icons/favorite_icon.png
     - assets/image/navbar/navbar_shape.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

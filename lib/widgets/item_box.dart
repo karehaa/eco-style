@@ -1,6 +1,7 @@
 import 'package:eco_style/pages/shop/item_card_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
+import 'package:intl/intl.dart';
 
 class ItemBox extends StatelessWidget {
   const ItemBox({
@@ -11,6 +12,8 @@ class ItemBox extends StatelessWidget {
     required this.itemBrand,
     required this.itemName,
     required this.itemPrice,
+    this.sizes = const ['S', 'M', 'L', 'XL'],
+    this.color = const [],
   });
 
   final String imagePath;
@@ -18,7 +21,9 @@ class ItemBox extends StatelessWidget {
   final double rating;
   final String itemBrand;
   final String itemName;
-  final String itemPrice;
+  final int itemPrice;
+  final List<String>? sizes;
+  final List<String>? color;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,8 @@ class ItemBox extends StatelessWidget {
             itemBrand: itemBrand,
             itemName: itemName,
             itemPrice: itemPrice,
+            sizes: sizes,
+            color: color,
           ),
         ),
       ),
@@ -160,7 +167,7 @@ class ItemBox extends StatelessWidget {
                         height: 2,
                       ),
                       Text(
-                        itemPrice,
+                        "Rp. ${NumberFormat.decimalPattern('id').format(itemPrice)}",
                         style: const TextStyle(
                           color: ColorPallete.black,
                           fontSize: 13,
@@ -172,7 +179,23 @@ class ItemBox extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
+            Positioned(
+              bottom: 60,
+              right: 0,
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: ColorPallete.white,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Image.asset(
+                  'assets/image/icons/favorite_icon.png',
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+            ),
           ],
         ),
       ),

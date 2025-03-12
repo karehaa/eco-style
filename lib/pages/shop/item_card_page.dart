@@ -1,7 +1,10 @@
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:eco_style/pages/shop/home_page.dart';
+import 'package:eco_style/widgets/color_list.dart';
 import 'package:eco_style/widgets/item_box.dart';
+import 'package:eco_style/widgets/size_list.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ItemCardPage extends StatefulWidget {
   const ItemCardPage({
@@ -12,6 +15,8 @@ class ItemCardPage extends StatefulWidget {
     required this.itemBrand,
     required this.itemName,
     required this.itemPrice,
+    this.sizes,
+    this.color,
   });
 
   final String imagePath;
@@ -19,7 +24,9 @@ class ItemCardPage extends StatefulWidget {
   final double rating;
   final String itemBrand;
   final String itemName;
-  final String itemPrice;
+  final int itemPrice;
+  final List<String>? sizes;
+  final List<String>? color;
 
   @override
   State<ItemCardPage> createState() => _ItemCardPageState();
@@ -270,7 +277,7 @@ class _ItemCardPageState extends State<ItemCardPage> {
                               ],
                             ),
                             Text(
-                              widget.itemPrice,
+                              "Rp. ${NumberFormat.decimalPattern('id').format(widget.itemPrice)}",
                               style: const TextStyle(
                                 color: ColorPallete.terracota,
                                 fontSize: 22,
@@ -320,87 +327,8 @@ class _ItemCardPageState extends State<ItemCardPage> {
                       horizontal: 23,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 19,
-                            vertical: 14,
-                          ),
-                          decoration: BoxDecoration(
-                            color: ColorPallete.white,
-                            borderRadius: BorderRadius.circular(66),
-                          ),
-                          child: const Text(
-                            "S",
-                            style: TextStyle(
-                              color: ColorPallete.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Inter',
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 19,
-                            vertical: 14,
-                          ),
-                          decoration: BoxDecoration(
-                            color: ColorPallete.white,
-                            borderRadius: BorderRadius.circular(66),
-                          ),
-                          child: const Text(
-                            "M",
-                            style: TextStyle(
-                              color: ColorPallete.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Inter',
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 19,
-                            vertical: 14,
-                          ),
-                          decoration: BoxDecoration(
-                            color: ColorPallete.white,
-                            borderRadius: BorderRadius.circular(66),
-                          ),
-                          child: const Text(
-                            "L",
-                            style: TextStyle(
-                              color: ColorPallete.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Inter',
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 19,
-                            vertical: 14,
-                          ),
-                          decoration: BoxDecoration(
-                            color: ColorPallete.white,
-                            borderRadius: BorderRadius.circular(66),
-                          ),
-                          child: const Text(
-                            "XL",
-                            style: TextStyle(
-                              color: ColorPallete.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Inter',
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 118,
-                        )
+                        SizeList(categories: widget.sizes!),
                       ],
                     ),
                   ),
@@ -424,28 +352,7 @@ class _ItemCardPageState extends State<ItemCardPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 12,
-                            horizontal: 42.5,
-                          ),
-                          decoration: BoxDecoration(
-                            color: ColorPallete.white,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: const Text(
-                            "Stone",
-                            style: TextStyle(
-                              color: ColorPallete.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Inter',
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 118,
-                        )
+                        ColorList(categories: widget.color!),
                       ],
                     ),
                   ),
@@ -765,7 +672,7 @@ class _ItemCardPageState extends State<ItemCardPage> {
                         Wrap(
                           spacing: 12,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 72,
                               height: 72,
                               child: ClipRRect(
@@ -775,7 +682,7 @@ class _ItemCardPageState extends State<ItemCardPage> {
                                     fit: BoxFit.cover,
                                   )),
                             ),
-                            Container(
+                            SizedBox(
                               width: 72,
                               height: 72,
                               child: ClipRRect(
@@ -819,10 +726,11 @@ class _ItemCardPageState extends State<ItemCardPage> {
                         Text(
                           "12 Items",
                           style: TextStyle(
-                              color: ColorPallete.darkGrey,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Inter'),
+                            color: ColorPallete.darkGrey,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Inter',
+                          ),
                         ),
                       ],
                     ),
@@ -844,6 +752,8 @@ class _ItemCardPageState extends State<ItemCardPage> {
                               itemBrand: widget.itemBrand,
                               itemName: widget.itemName,
                               itemPrice: widget.itemPrice,
+                              sizes: widget.sizes,
+                              color: widget.color,
                             ),
                             const SizedBox(
                               width: 24,
@@ -855,6 +765,8 @@ class _ItemCardPageState extends State<ItemCardPage> {
                               itemBrand: widget.itemBrand,
                               itemName: widget.itemName,
                               itemPrice: widget.itemPrice,
+                              sizes: widget.sizes,
+                              color: widget.color,
                             ),
                             const SizedBox(
                               width: 24,
@@ -866,6 +778,8 @@ class _ItemCardPageState extends State<ItemCardPage> {
                               itemBrand: widget.itemBrand,
                               itemName: widget.itemName,
                               itemPrice: widget.itemPrice,
+                              sizes: widget.sizes,
+                              color: widget.color,
                             ),
                           ],
                         ),
