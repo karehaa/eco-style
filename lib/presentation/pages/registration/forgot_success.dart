@@ -1,4 +1,4 @@
-import 'package:eco_style/pages/registration/sign_in.dart';
+import 'package:eco_style/presentation/pages/registration/sign_in.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
 

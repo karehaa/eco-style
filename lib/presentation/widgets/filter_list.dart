@@ -19,7 +19,7 @@ class _FilterListState extends State<FilterList> {
   @override
   void initState() {
     super.initState();
-    selectedCategories = ["All"];
+    selectedCategories = [widget.categories.first];
   }
 
   void toggleCategory(String category) {

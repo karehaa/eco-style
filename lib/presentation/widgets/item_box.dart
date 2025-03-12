@@ -1,9 +1,10 @@
-import 'package:eco_style/pages/shop/item_card_page.dart';
+import 'package:eco_style/presentation/pages/shop/item_card_page.dart';
+import 'package:eco_style/presentation/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:intl/intl.dart';
 
-class ItemBox extends StatelessWidget {
+class ItemBox extends StatefulWidget {
   const ItemBox({
     super.key,
     required this.imagePath,
@@ -26,20 +27,25 @@ class ItemBox extends StatelessWidget {
   final List<String>? color;
 
   @override
+  State<ItemBox> createState() => _ItemBoxState();
+}
+
+class _ItemBoxState extends State<ItemBox> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => ItemCardPage(
-            imagePath: imagePath,
-            starCount: starCount,
-            rating: rating,
-            itemBrand: itemBrand,
-            itemName: itemName,
-            itemPrice: itemPrice,
-            sizes: sizes,
-            color: color,
+            imagePath: widget.imagePath,
+            starCount: widget.starCount,
+            rating: widget.rating,
+            itemBrand: widget.itemBrand,
+            itemName: widget.itemName,
+            itemPrice: widget.itemPrice,
+            sizes: widget.sizes,
+            color: widget.color,
           ),
         ),
       ),
@@ -56,7 +62,7 @@ class ItemBox extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
-                      imagePath,
+                      widget.imagePath,
                       fit: BoxFit.cover,
                       width: 152,
                       height: 174,
@@ -71,7 +77,7 @@ class ItemBox extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      starCount > 0
+                      widget.starCount > 0
                           ? 'assets/image/icons/star_icon.png'
                           : 'assets/image/icons/star_off_icon.png',
                       width: 14,
@@ -81,7 +87,7 @@ class ItemBox extends StatelessWidget {
                       width: 3,
                     ),
                     Image.asset(
-                      starCount > 1
+                      widget.starCount > 1
                           ? 'assets/image/icons/star_icon.png'
                           : 'assets/image/icons/star_off_icon.png',
                       width: 14,
@@ -91,7 +97,7 @@ class ItemBox extends StatelessWidget {
                       width: 3,
                     ),
                     Image.asset(
-                      starCount > 2
+                      widget.starCount > 2
                           ? 'assets/image/icons/star_icon.png'
                           : 'assets/image/icons/star_off_icon.png',
                       width: 14,
@@ -101,7 +107,7 @@ class ItemBox extends StatelessWidget {
                       width: 3,
                     ),
                     Image.asset(
-                      starCount > 3
+                      widget.starCount > 3
                           ? 'assets/image/icons/star_icon.png'
                           : 'assets/image/icons/star_off_icon.png',
                       width: 14,
@@ -111,7 +117,7 @@ class ItemBox extends StatelessWidget {
                       width: 3,
                     ),
                     Image.asset(
-                      starCount > 4
+                      widget.starCount > 4
                           ? 'assets/image/icons/star_icon.png'
                           : 'assets/image/icons/star_off_icon.png',
                       width: 14,
@@ -123,7 +129,7 @@ class ItemBox extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 2),
                       child: Text(
-                        "($rating)",
+                        "(${widget.rating})",
                         style: const TextStyle(
                           color: ColorPallete.lighterGrey,
                           fontSize: 10,
@@ -143,7 +149,7 @@ class ItemBox extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        itemBrand,
+                        widget.itemBrand,
                         style: const TextStyle(
                           color: ColorPallete.lighterGrey,
                           fontSize: 11,
@@ -155,7 +161,7 @@ class ItemBox extends StatelessWidget {
                         height: 2,
                       ),
                       Text(
-                        itemName,
+                        widget.itemName,
                         style: const TextStyle(
                           color: ColorPallete.black,
                           fontSize: 14,
@@ -167,7 +173,7 @@ class ItemBox extends StatelessWidget {
                         height: 2,
                       ),
                       Text(
-                        "Rp. ${NumberFormat.decimalPattern('id').format(itemPrice)}",
+                        "Rp. ${NumberFormat.decimalPattern('id').format(widget.itemPrice)}",
                         style: const TextStyle(
                           color: ColorPallete.black,
                           fontSize: 13,
@@ -182,18 +188,16 @@ class ItemBox extends StatelessWidget {
             ),
             Positioned(
               bottom: 60,
-              right: 0,
-              child: Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  color: ColorPallete.white,
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Image.asset(
-                  'assets/image/icons/favorite_icon.png',
-                  width: 24,
-                  height: 24,
-                ),
+              right: -7,
+              child: FavoriteButton(
+                imagePath: widget.imagePath,
+                starCount: widget.starCount,
+                rating: widget.rating,
+                itemBrand: widget.itemBrand,
+                itemName: widget.itemName,
+                itemPrice: widget.itemPrice,
+                sizes: widget.sizes,
+                color: widget.color,
               ),
             ),
           ],

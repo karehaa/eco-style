@@ -11,4 +11,5 @@ class ColorPallete {
   static const Color cream = Color.fromARGB(255, 200, 185, 126);
   static const Color terracota = Color.fromARGB(255, 203, 103, 67);
   static const Color darkBlue = Color.fromARGB(255, 34, 50, 99);
+  static const Color red = Color.fromARGB(255, 219, 48, 34);
 }

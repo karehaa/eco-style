@@ -1,32 +1,44 @@
-import 'package:eco_style/pages/onboarding/onboarding3.dart';
-import 'package:eco_style/pages/registration/forgot_password.dart';
-import 'package:eco_style/pages/registration/sign_up.dart';
-import 'package:eco_style/pages/shop/home_page.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
-import 'package:eco_style/widgets/multi_purpose_button.dart';
-import 'package:eco_style/widgets/non_visible_field.dart';
-import 'package:eco_style/widgets/transparent_button.dart';
-import 'package:eco_style/widgets/visible_field.dart';
+import 'package:eco_style/data/models/sign_up_req_parameter.dart';
+import 'package:eco_style/domain/usecases/sign_up.dart';
+import 'package:eco_style/service_locator.dart';
+import 'package:eco_style/presentation/widgets/multi_purpose_button.dart';
+import 'package:eco_style/presentation/widgets/non_visible_field.dart';
+import 'package:eco_style/presentation/widgets/transparent_button.dart';
+import 'package:eco_style/presentation/widgets/visible_field.dart';
+import 'package:eco_style/presentation/pages/registration/sign_in.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<SignIn> createState() => _SignIn();
+  State<SignUp> createState() => _SignUp();
 }
 
-class _SignIn extends State<SignIn> {
+class _SignUp extends State<SignUp> {
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  void showErrorMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+          content:
+              Text(message, style: const TextStyle(color: ColorPallete.white)),
+          backgroundColor: Colors.red),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
-    final screenHeight = mediaQuery.size.height;
+    final screenHeigth = mediaQuery.size.height;
     final double padding = screenWidth * 0.06;
-    final double spacing = screenHeight * 0.02;
+    final double spacing = screenHeigth * 0.02;
 
     return Scaffold(
       backgroundColor: ColorPallete.lightCream,
@@ -50,14 +62,14 @@ class _SignIn extends State<SignIn> {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Onboarding3(),
+                  builder: (context) => const SignIn(),
                 ),
               ),
               icon: const Icon(Icons.arrow_back_ios_new_rounded),
               color: ColorPallete.white,
             ),
             title: const Text(
-              "Login",
+              "Register User",
               style: TextStyle(
                 color: ColorPallete.white,
                 fontSize: 18,
@@ -82,9 +94,11 @@ class _SignIn extends State<SignIn> {
                   physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
-                      SizedBox(height: spacing * 3),
+                      SizedBox(
+                        height: spacing * 1.5,
+                      ),
                       const Text(
-                        "Welcome Back!",
+                        "Welcome to EcoStyle!",
                         style: TextStyle(
                           color: ColorPallete.terracota,
                           fontSize: 28,
@@ -92,7 +106,29 @@ class _SignIn extends State<SignIn> {
                           fontFamily: 'Inter',
                         ),
                       ),
-                      SizedBox(height: spacing * 2),
+                      SizedBox(
+                        height: spacing * 1.5,
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Your Name",
+                          style: TextStyle(
+                            color: ColorPallete.darkBlue,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Inter',
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: spacing * 0.8),
+                      VisibleField(
+                        controller: usernameController,
+                        labelText: "Input your First Name",
+                      ),
+                      SizedBox(
+                        height: spacing,
+                      ),
                       const Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -110,7 +146,9 @@ class _SignIn extends State<SignIn> {
                         controller: emailController,
                         labelText: "xxx@gmail.com",
                       ),
-                      SizedBox(height: spacing * 0.8),
+                      SizedBox(
+                        height: spacing,
+                      ),
                       const Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -128,29 +166,77 @@ class _SignIn extends State<SignIn> {
                         controller: passwordController,
                         labelText: "Input your password",
                       ),
-                      SizedBox(height: spacing * 1.5),
-                      const MultiPurposeButton(
-                        buttonText: "Login",
+                      SizedBox(
+                        height: spacing,
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Confirm Password",
+                          style: TextStyle(
+                            color: ColorPallete.darkBlue,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Inter',
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: spacing * 0.8),
+                      NonVisibleField(
+                        controller: confirmPasswordController,
+                        labelText: "Input confirm password",
+                      ),
+                      SizedBox(
+                        height: spacing * 1.5,
+                      ),
+                      MultiPurposeButton(
+                        buttonText: "Sign up",
                         buttonColor: ColorPallete.terracota,
                         textColor: ColorPallete.white,
-                        textWeight: FontWeight.w700,
+                        textWeight: FontWeight.w600,
                         radius: 8,
-                        routeDestination: HomePage(),
                         hasIcon: false,
+                        forRoute: false,
+                        function: () {
+                          if (confirmPasswordController.text.isEmpty ||
+                              passwordController.text.isEmpty ||
+                              emailController.text.isEmpty ||
+                              usernameController.text.isEmpty) {
+                            showErrorMessage("All fields are required.");
+                          } else if (confirmPasswordController.text !=
+                              passwordController.text) {
+                            showErrorMessage(
+                                "Password do not match. Please try again.");
+                          } else {
+                            sl<SignUpUseCase>().call(
+                              param: SignUpReqParameter(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                username: usernameController.text,
+                              ),
+                            );
+                          }
+                        },
                       ),
-                      SizedBox(height: spacing * 1.5),
-                      const TransparentButton(
-                        buttonText: "Forgot Password?",
-                        color: ColorPallete.terracota,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        routeDestination: ForgotPassword(),
+                      SizedBox(
+                        height: spacing * 1.5,
                       ),
-                      SizedBox(height: spacing * 1.5),
+                      const Text(
+                        "Or sign up with",
+                        style: TextStyle(
+                          color: ColorPallete.darkGrey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                      SizedBox(
+                        height: spacing * 1.5,
+                      ),
                       MultiPurposeButton(
                         buttonColor: ColorPallete.white,
                         textColor: ColorPallete.black,
-                        textWeight: FontWeight.w400,
+                        textWeight: FontWeight.w500,
                         buttonText: "Continue with Google",
                         radius: 10,
                         routeDestination: const SignIn(),
@@ -171,12 +257,14 @@ class _SignIn extends State<SignIn> {
                           )
                         ],
                       ),
-                      SizedBox(height: spacing * 2),
+                      SizedBox(
+                        height: spacing * 1.5,
+                      ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "You don't have an account? ",
+                            "Already have an account? ",
                             style: TextStyle(
                               color: ColorPallete.black,
                               fontSize: 16,
@@ -185,11 +273,11 @@ class _SignIn extends State<SignIn> {
                             ),
                           ),
                           TransparentButton(
-                            buttonText: "Sign Up",
+                            buttonText: "Sign In",
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                             color: ColorPallete.terracota,
-                            routeDestination: SignUp(),
+                            routeDestination: SignIn(),
                           )
                         ],
                       ),

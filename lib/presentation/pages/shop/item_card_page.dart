@@ -1,8 +1,9 @@
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
-import 'package:eco_style/pages/shop/home_page.dart';
-import 'package:eco_style/widgets/color_list.dart';
-import 'package:eco_style/widgets/item_box.dart';
-import 'package:eco_style/widgets/size_list.dart';
+import 'package:eco_style/presentation/pages/shop/home_page.dart';
+import 'package:eco_style/presentation/widgets/color_list.dart';
+import 'package:eco_style/presentation/widgets/favorite_button.dart';
+import 'package:eco_style/presentation/widgets/item_box.dart';
+import 'package:eco_style/presentation/widgets/size_list.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -33,6 +34,8 @@ class ItemCardPage extends StatefulWidget {
 }
 
 class _ItemCardPageState extends State<ItemCardPage> {
+  String selectedSize = ''; // Track selected size
+  String selectedColor = ''; // Track selected color
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -166,23 +169,29 @@ class _ItemCardPageState extends State<ItemCardPage> {
                           ),
                         ),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             IconButton(
                               onPressed: () {},
-                              icon: Image.asset(
-                                'assets/image/icons/share_icon.png',
-                                width: 18,
-                                height: 19.92,
+                              icon: Container(
+                                padding: const EdgeInsets.all(6),
+                                child: Image.asset(
+                                  'assets/image/icons/share_icon.png',
+                                  width: 26,
+                                  height: 27.92,
+                                ),
                               ),
                             ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(
-                                'assets/image/icons/favorite_inactive.png',
-                                width: 36,
-                                height: 36,
-                              ),
-                            ),
+                            FavoriteButton(
+                              imagePath: widget.imagePath,
+                              starCount: widget.starCount,
+                              rating: widget.rating,
+                              itemBrand: widget.itemBrand,
+                              itemName: widget.itemName,
+                              itemPrice: widget.itemPrice,
+                              sizes: widget.sizes,
+                              color: widget.color,
+                            )
                           ],
                         ),
                       ],
@@ -328,7 +337,14 @@ class _ItemCardPageState extends State<ItemCardPage> {
                     ),
                     child: Row(
                       children: [
-                        SizeList(categories: widget.sizes!),
+                        SizeList(
+                          categories: widget.sizes!,
+                          onSizeSelected: (size) {
+                            setState(() {
+                              selectedSize = size;
+                            });
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -352,7 +368,14 @@ class _ItemCardPageState extends State<ItemCardPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ColorList(categories: widget.color!),
+                        ColorList(
+                          categories: widget.color!,
+                          onColorSelected: (color) {
+                            setState(() {
+                              selectedColor = color;
+                            });
+                          },
+                        ),
                       ],
                     ),
                   ),

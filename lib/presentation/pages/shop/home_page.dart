@@ -1,12 +1,12 @@
-import 'package:eco_style/pages/shop/filter_page.dart';
+import 'package:eco_style/presentation/pages/shop/filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
-import 'package:eco_style/pages/shop/preloved.dart';
-import 'package:eco_style/pages/shop/sustainable_fashion.dart';
-import 'package:eco_style/widgets/filter_button.dart';
-import 'package:eco_style/widgets/location_drop_down.dart';
-import 'package:eco_style/widgets/search_field.dart';
-import 'package:eco_style/widgets/shopping_card.dart';
+import 'package:eco_style/presentation/pages/shop/preloved.dart';
+import 'package:eco_style/presentation/pages/shop/sustainable_fashion.dart';
+import 'package:eco_style/presentation/widgets/filter_button.dart';
+import 'package:eco_style/presentation/widgets/location_drop_down.dart';
+import 'package:eco_style/presentation/widgets/search_field.dart';
+import 'package:eco_style/presentation/widgets/shopping_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

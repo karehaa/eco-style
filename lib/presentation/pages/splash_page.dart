@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:eco_style/pages/onboarding/onboarding1.dart';
+import 'package:eco_style/presentation/pages/onboarding/onboarding1.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
 

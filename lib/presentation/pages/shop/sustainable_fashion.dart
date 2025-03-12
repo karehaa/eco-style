@@ -1,4 +1,4 @@
-import 'package:eco_style/widgets/item_box.dart';
+import 'package:eco_style/presentation/widgets/item_box.dart';
 import 'package:flutter/material.dart';
 
 class SustainableFashion extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
-import 'package:eco_style/pages/shop/home_page.dart';
-import 'package:eco_style/widgets/filter_list.dart';
-import 'package:eco_style/widgets/range_field.dart';
+import 'package:eco_style/presentation/pages/shop/home_page.dart';
+import 'package:eco_style/presentation/widgets/filter_list.dart';
+import 'package:eco_style/presentation/widgets/range_field.dart';
 import 'package:flutter/material.dart';
 
 class FilterPage extends StatefulWidget {
