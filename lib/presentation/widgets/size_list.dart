@@ -9,26 +9,26 @@ class SizeList extends StatefulWidget {
   });
 
   final List<String> categories;
-  final Function(String) onSizeSelected; // Callback to update selected size
+  final Function(String) onSizeSelected;
 
   @override
   State<SizeList> createState() => _SizeListState();
 }
 
 class _SizeListState extends State<SizeList> {
-  String? selectedCategory; // Store only one selected category
+  String? selectedCategory;
 
   void toggleCategory(String category) {
     setState(() {
       if (selectedCategory == category) {
-        selectedCategory = null; // Deselect if tapped again
+        selectedCategory = null;
       } else {
         selectedCategory = category;
       }
     });
 
     if (selectedCategory != null) {
-      widget.onSizeSelected(selectedCategory!); // Notify parent
+      widget.onSizeSelected(selectedCategory!);
     }
   }
 

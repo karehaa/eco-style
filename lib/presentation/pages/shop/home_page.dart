@@ -1,4 +1,5 @@
 import 'package:eco_style/presentation/pages/shop/filter_page.dart';
+import 'package:eco_style/presentation/pages/shop/wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:eco_style/presentation/pages/shop/preloved.dart';
@@ -93,10 +94,19 @@ class _HomePage extends State<HomePage> {
                                   ),
                                   Row(
                                     children: [
-                                      Image.asset(
-                                        'assets/image/icons/heart_icon.png',
-                                        width: 24,
-                                        height: 24,
+                                      GestureDetector(
+                                        onTap: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                WishlistPage(),
+                                          ),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/image/icons/heart_icon.png',
+                                          width: 24,
+                                          height: 24,
+                                        ),
                                       ),
                                       const SizedBox(width: 12),
                                       Image.asset(

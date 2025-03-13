@@ -34,8 +34,8 @@ class FavoriteButton extends StatefulWidget {
 
 class _FavoriteButtonState extends State<FavoriteButton> {
   void _showFavoriteDialog(BuildContext context, ItemModel item) {
-    String selectedSize = ''; // Track selected size
-    String selectedColor = ''; // Track selected color
+    String selectedSize = '';
+    String selectedColor = '';
 
     showModalBottomSheet(
       context: context,
@@ -43,12 +43,12 @@ class _FavoriteButtonState extends State<FavoriteButton> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      backgroundColor: ColorPallete.lightCream, // Light beige background
+      backgroundColor: ColorPallete.lightCream,
       builder: (context) {
         return StatefulBuilder(
           builder: (context, setState) {
             return SizedBox(
-              height: 388, // Fixed height
+              height: 388,
               child: Padding(
                 padding: EdgeInsets.only(
                   left: 16,
@@ -59,7 +59,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /// **Draggable Indicator**
                     Center(
                       child: Container(
                         width: 60,
@@ -71,8 +70,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                       ),
                     ),
                     const SizedBox(height: 10),
-
-                    /// **Title: "Detail"**
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -88,8 +85,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                       ],
                     ),
                     const SizedBox(height: 10),
-
-                    /// **Size Selection Header**
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -103,9 +98,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            // Handle size info action
-                          },
+                          onTap: () {},
                           child: const Text(
                             "Size Info",
                             style: TextStyle(
@@ -118,8 +111,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                         ),
                       ],
                     ),
-
-                    /// **Size Options**
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       child: SizeList(
@@ -133,8 +124,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                       ),
                     ),
                     const SizedBox(height: 14),
-
-                    /// **Color Selection**
                     if (item.color != null && item.color!.isNotEmpty) ...[
                       const Text(
                         "Select Color",
@@ -158,9 +147,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                         ),
                       ),
                     ],
-                    const Spacer(), // Pushes button to bottom
-
-                    /// **Add to Wishlist Button**
+                    const Spacer(),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -174,8 +161,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                             );
                             return;
                           }
-
-                          /// **Add to Favorites with Selected Options**
                           Provider.of<FavoriteProvider>(context, listen: false)
                               .toggleFavorite(
                             item,
@@ -186,8 +171,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                           Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              ColorPallete.terracota, // Terracotta color
+                          backgroundColor: ColorPallete.terracota,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(66),
                           ),

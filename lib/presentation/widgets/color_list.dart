@@ -9,26 +9,26 @@ class ColorList extends StatefulWidget {
   });
 
   final List<String> categories;
-  final Function(String) onColorSelected; // Callback to update selected color
+  final Function(String) onColorSelected;
 
   @override
   State<ColorList> createState() => _ColorListState();
 }
 
 class _ColorListState extends State<ColorList> {
-  String? selectedCategory; // Store only one selected category
+  String? selectedCategory;
 
   void toggleCategory(String category) {
     setState(() {
       if (selectedCategory == category) {
-        selectedCategory = null; // Deselect if tapped again
+        selectedCategory = null;
       } else {
         selectedCategory = category;
       }
     });
 
     if (selectedCategory != null) {
-      widget.onColorSelected(selectedCategory!); // Notify parent
+      widget.onColorSelected(selectedCategory!);
     }
   }
 
