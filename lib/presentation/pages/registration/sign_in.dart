@@ -1,3 +1,5 @@
+import 'package:eco_style/data/models/sign_in_req_parameter.dart';
+import 'package:eco_style/domain/usecases/sign_in.dart';
 import 'package:eco_style/presentation/pages/onboarding/onboarding3.dart';
 import 'package:eco_style/presentation/pages/registration/forgot_password.dart';
 import 'package:eco_style/presentation/pages/registration/sign_up.dart';
@@ -7,6 +9,7 @@ import 'package:eco_style/presentation/widgets/multi_purpose_button.dart';
 import 'package:eco_style/presentation/widgets/non_visible_field.dart';
 import 'package:eco_style/presentation/widgets/transparent_button.dart';
 import 'package:eco_style/presentation/widgets/visible_field.dart';
+import 'package:eco_style/service_locator.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -19,6 +22,15 @@ class SignIn extends StatefulWidget {
 class _SignIn extends State<SignIn> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  void showErrorMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+          content:
+              Text(message, style: const TextStyle(color: ColorPallete.white)),
+          backgroundColor: Colors.red),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,14 +141,41 @@ class _SignIn extends State<SignIn> {
                         labelText: "Input your password",
                       ),
                       SizedBox(height: spacing * 1.5),
-                      const MultiPurposeButton(
+                      MultiPurposeButton(
                         buttonText: "Login",
                         buttonColor: ColorPallete.terracota,
                         textColor: ColorPallete.white,
                         textWeight: FontWeight.w700,
                         radius: 8,
-                        routeDestination: HomePage(),
                         hasIcon: false,
+                        forRoute: false,
+                        function: () async {
+                          if (passwordController.text.isEmpty ||
+                              emailController.text.isEmpty) {
+                            showErrorMessage("All fields are required.");
+                          } else {
+                            final result = await sl<SignInUseCase>().call(
+                              param: SignInReqParameter(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              ),
+                            );
+
+                            result.fold(
+                              (failure) {
+                                showErrorMessage("Sign-in failed: $failure");
+                              },
+                              (success) {
+                                // Navigate to HomePage on success
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomePage()),
+                                );
+                              },
+                            );
+                          }
+                        },
                       ),
                       SizedBox(height: spacing * 1.5),
                       const TransparentButton(

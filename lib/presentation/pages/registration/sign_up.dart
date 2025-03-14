@@ -1,6 +1,7 @@
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:eco_style/data/models/sign_up_req_parameter.dart';
 import 'package:eco_style/domain/usecases/sign_up.dart';
+import 'package:eco_style/presentation/pages/shop/home_page.dart';
 import 'package:eco_style/service_locator.dart';
 import 'package:eco_style/presentation/widgets/multi_purpose_button.dart';
 import 'package:eco_style/presentation/widgets/non_visible_field.dart';
@@ -197,7 +198,7 @@ class _SignUp extends State<SignUp> {
                         radius: 8,
                         hasIcon: false,
                         forRoute: false,
-                        function: () {
+                        function: () async {
                           if (confirmPasswordController.text.isEmpty ||
                               passwordController.text.isEmpty ||
                               emailController.text.isEmpty ||
@@ -206,14 +207,28 @@ class _SignUp extends State<SignUp> {
                           } else if (confirmPasswordController.text !=
                               passwordController.text) {
                             showErrorMessage(
-                                "Password do not match. Please try again.");
+                                "Passwords do not match. Please try again.");
                           } else {
-                            sl<SignUpUseCase>().call(
+                            final result = await sl<SignUpUseCase>().call(
                               param: SignUpReqParameter(
                                 email: emailController.text,
                                 password: passwordController.text,
                                 name: usernameController.text,
                               ),
+                            );
+
+                            result.fold(
+                              (failure) {
+                                showErrorMessage("Sign-up failed: $failure");
+                              },
+                              (success) {
+                                // Navigate to HomePage on success
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomePage()),
+                                );
+                              },
                             );
                           }
                         },

@@ -11,8 +11,8 @@ class SignUpReqParameter {
     required this.name,
     required this.email,
     required this.password,
-    this.phoneNumber,
-    this.address,
+    this.phoneNumber = "-",
+    this.address = "-",
     this.role = "user",
     this.isAdmin = false,
   });

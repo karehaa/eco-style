@@ -85,7 +85,7 @@ class _HomePage extends State<HomePage> {
                                 children: [
                                   const Text(
                                     "Hi! Welcome Naila!",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: ColorPallete.white,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700,
@@ -99,7 +99,7 @@ class _HomePage extends State<HomePage> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                WishlistPage(),
+                                                const WishlistPage(),
                                           ),
                                         ),
                                         child: Image.asset(
