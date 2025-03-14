@@ -1,19 +1,31 @@
 class SignUpReqParameter {
+  final String name;
   final String email;
   final String password;
-  final String username;
+  final String? phoneNumber;
+  final String? address;
+  final String? role;
+  final bool? isAdmin;
 
   SignUpReqParameter({
+    required this.name,
     required this.email,
     required this.password,
-    required this.username,
+    this.phoneNumber,
+    this.address,
+    this.role = "user",
+    this.isAdmin = false,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
+      'name': name,
       'email': email,
       'password': password,
-      'username': username,
+      'phone_number': phoneNumber,
+      'address': address,
+      'role': role,
+      'is_admin': isAdmin,
     };
   }
 }

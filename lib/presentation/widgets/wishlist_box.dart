@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:eco_style/core/configs/themes/color_pallete.dart';
 import 'package:intl/intl.dart';
 
-class ItemBox extends StatefulWidget {
-  const ItemBox({
+class WishlistBox extends StatefulWidget {
+  const WishlistBox({
     super.key,
     required this.imagePath,
     required this.starCount,
@@ -27,10 +27,10 @@ class ItemBox extends StatefulWidget {
   final List<String>? color;
 
   @override
-  State<ItemBox> createState() => _ItemBoxState();
+  State<WishlistBox> createState() => _WishlistBoxState();
 }
 
-class _ItemBoxState extends State<ItemBox> {
+class _WishlistBoxState extends State<WishlistBox> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

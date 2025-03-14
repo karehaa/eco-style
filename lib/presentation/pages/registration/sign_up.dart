@@ -212,7 +212,7 @@ class _SignUp extends State<SignUp> {
                               param: SignUpReqParameter(
                                 email: emailController.text,
                                 password: passwordController.text,
-                                username: usernameController.text,
+                                name: usernameController.text,
                               ),
                             );
                           }

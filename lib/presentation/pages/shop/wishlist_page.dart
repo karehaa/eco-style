@@ -3,6 +3,7 @@ import 'package:eco_style/presentation/model/item_model.dart';
 import 'package:eco_style/presentation/pages/shop/home_page.dart';
 import 'package:eco_style/presentation/provider/favorite_provider.dart';
 import 'package:eco_style/presentation/widgets/item_box.dart';
+// import 'package:eco_style/presentation/widgets/wishlist_box.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,9 +17,6 @@ class WishlistPage extends StatefulWidget {
 class _WishlistPageState extends State<WishlistPage> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FavoriteProvider>(context);
-    final List<ItemModel> favoriteItems = provider.favorites;
-
     return Scaffold(
       backgroundColor: ColorPallete.lightCream,
       appBar: PreferredSize(
@@ -73,41 +71,42 @@ class _WishlistPageState extends State<WishlistPage> {
           ),
         ),
       ),
-      body: favoriteItems.isEmpty
-          ? const Center(
-              child: Text("Your Wishlist is Empty"),
-            )
-          : GridView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 24,
-                childAspectRatio: 0.65,
-              ),
-              itemCount: favoriteItems.length,
-              itemBuilder: (context, index) {
-                final item = favoriteItems[index];
+      body: Consumer<FavoriteProvider>(
+        builder: (context, provider, child) {
+          final List<ItemModel> favoriteItems = provider.favorites;
 
-                return Center(
-                  child: Wrap(
-                    children: [
-                      ItemBox(
-                        imagePath: item.imagePath,
-                        starCount: item.starCount,
-                        rating: item.rating,
-                        itemBrand: item.itemBrand,
-                        itemName: item.itemName,
-                        itemPrice: item.itemPrice,
-                        sizes: [item.selectedSize],
-                        color: [item.selectedColor],
-                      ),
-                    ],
+          return favoriteItems.isEmpty
+              ? const Center(
+                  child: Text("Your Wishlist is Empty"),
+                )
+              : GridView.builder(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 24,
+                    childAspectRatio: 0.61,
                   ),
+                  itemCount: favoriteItems.length,
+                  itemBuilder: (context, index) {
+                    final item = favoriteItems[index];
+
+                    return ItemBox(
+                      imagePath: item.imagePath,
+                      starCount: item.starCount,
+                      rating: item.rating,
+                      itemBrand: item.itemBrand,
+                      itemName: item.itemName,
+                      itemPrice: item.itemPrice,
+                      sizes: [item.selectedSize],
+                      color: [item.selectedColor],
+                    );
+                  },
                 );
-              },
-            ),
+        },
+      ),
     );
   }
 }

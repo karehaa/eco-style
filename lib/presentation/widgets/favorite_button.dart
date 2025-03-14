@@ -33,9 +33,12 @@ class FavoriteButton extends StatefulWidget {
 }
 
 class _FavoriteButtonState extends State<FavoriteButton> {
+  String? selectedSize;
+  String? selectedColor;
+
   void _showFavoriteDialog(BuildContext context, ItemModel item) {
-    String selectedSize = '';
-    String selectedColor = '';
+    String tempSelectedSize = '';
+    String tempSelectedColor = '';
 
     showModalBottomSheet(
       context: context,
@@ -118,7 +121,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                         categories: item.sizes ?? [],
                         onSizeSelected: (size) {
                           setState(() {
-                            selectedSize = size;
+                            tempSelectedSize = size;
                           });
                         },
                       ),
@@ -141,7 +144,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                           categories: item.color!,
                           onColorSelected: (color) {
                             setState(() {
-                              selectedColor = color;
+                              tempSelectedColor = color;
                             });
                           },
                         ),
@@ -152,7 +155,8 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (selectedSize.isEmpty || selectedColor.isEmpty) {
+                          if (tempSelectedSize.isEmpty ||
+                              tempSelectedColor.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content:
@@ -161,11 +165,17 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                             );
                             return;
                           }
+
+                          setState(() {
+                            selectedSize = tempSelectedSize;
+                            selectedColor = tempSelectedColor;
+                          });
+
                           Provider.of<FavoriteProvider>(context, listen: false)
                               .toggleFavorite(
                             item,
-                            selectedSize,
-                            selectedColor,
+                            tempSelectedSize,
+                            tempSelectedColor,
                           );
 
                           Navigator.pop(context);
@@ -200,8 +210,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = FavoriteProvider.of(context);
-
+    final provider = Provider.of<FavoriteProvider>(context, listen: true);
     final ItemModel item = ItemModel(
       imagePath: widget.imagePath,
       starCount: widget.starCount,
@@ -213,36 +222,41 @@ class _FavoriteButtonState extends State<FavoriteButton> {
       color: widget.color,
     );
 
+    bool isFavorited = provider.isExist(
+      item,
+      selectedSize ?? (item.sizes?.first ?? ''),
+      selectedColor ?? (item.color?.first ?? ''),
+    );
+
     return IconButton(
       onPressed: () {
-        _showFavoriteDialog(context, item);
+        if (isFavorited) {
+          provider.toggleFavorite(
+            item,
+            selectedSize!,
+            selectedColor!,
+          );
+          setState(() {}); // Update UI
+        } else {
+          _showFavoriteDialog(context, item);
+        }
       },
       icon: Container(
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            color: provider.isExist(
-              item,
-              item.sizes!.first,
-              item.color!.first,
+          borderRadius: BorderRadius.circular(100),
+          color: isFavorited ? ColorPallete.red : ColorPallete.white,
+          boxShadow: [
+            BoxShadow(
+              color: ColorPallete.black.withOpacity(0.08),
+              blurRadius: 2,
+              offset: const Offset(0, 4),
             )
-                ? ColorPallete.red
-                : ColorPallete.white,
-            boxShadow: [
-              BoxShadow(
-                  color: ColorPallete.black.withOpacity(0.08),
-                  blurRadius: 2,
-                  offset: const Offset(0, 4))
-            ]),
+          ],
+        ),
         child: Image.asset(
           'assets/image/icons/favorite_icon.png',
-          color: provider.isExist(
-            item,
-            item.sizes!.first,
-            item.color!.first,
-          )
-              ? ColorPallete.white
-              : ColorPallete.darkGrey,
+          color: isFavorited ? ColorPallete.white : ColorPallete.darkGrey,
           width: 24,
           height: 24,
         ),

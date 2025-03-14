@@ -20,7 +20,11 @@ class AuthApiServiceImplementation extends AuthApiService {
 
       return Right(response);
     } on DioException catch (e) {
-      return Left(e.response!.data['message']);
+      if (e.response?.data is Map<String, dynamic>) {
+        return Left(
+            e.response!.data['message'] ?? "An unexpected error occurred");
+      }
+      return Left("An unexpected error occurred: ${e.response?.data}");
     }
   }
 }

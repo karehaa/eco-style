@@ -1,4 +1,4 @@
 class ApiUrls {
-  static const baseURL = 'BASE API URL HERE!';
-  static const register = '${baseURL}REGISTER API URL HERE!';
+  static const baseURL = 'https://be-intern.bccdev.id/willy/api/v1/';
+  static const register = '${baseURL}users/register';
 }
