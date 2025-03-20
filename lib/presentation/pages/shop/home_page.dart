@@ -338,7 +338,7 @@ class _HomePage extends State<HomePage> {
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Inter',
                             ),
-                          )
+                          ),
                         ],
                       )
                     ],
